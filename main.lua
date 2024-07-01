@@ -1,8 +1,11 @@
 function love.load()
     -- automatically load libs
     local object_files = {}
-    recursiveEnumerate('libs', object_files)
+    recursiveEnumerate('objects', object_files)
     requireFiles(object_files)
+
+    -- logic
+    circle1 = Circle(400, 400, 50)
 end
 
 function love.update(dt)
@@ -10,6 +13,10 @@ function love.update(dt)
     if love.keyboard.isDown("escape") then
         love.event.quit()
     end
+end
+
+function love.draw()
+    circle1:draw()
 end
 
 function recursiveEnumerate(folder, file_list)
