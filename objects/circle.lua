@@ -1,11 +1,10 @@
 local Object = require "libs/classic"
-
 Circle = Object:extend()
 
 function Circle:new(x, y, radius)
-    self.x = x
-    self.y = y
-    self.radius = radius
+    self.x = x or 0
+    self.y = y or 0
+    self.radius = radius or 0
     self.creation_time = love.timer.getTime()
 end
 
