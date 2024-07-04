@@ -1,4 +1,3 @@
-local Object = require "libs/classic"
 Circle = Object:extend()
 
 function Circle:new(x, y, radius)

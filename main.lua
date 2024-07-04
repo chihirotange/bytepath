@@ -1,22 +1,18 @@
+require "libs.utils"
+Object = require "libs.classic"
+Timer = require "libs.timer"
+
 function love.load()
-    -- libraries
-    Timer = require "libs.timer"
     -- automatically load libs
     local object_files = {}
     recursiveEnumerate('objects', object_files)
     requireFiles(object_files)
 
     -- logic
-    uberCircle = UberCircle(love.graphics.getWidth()/2, love.graphics.getHeight()/2, 30, 150, 10)
-    GlobalTimer = Timer()
-    local handler_1 = GlobalTimer:after(1, function() print("hello") end)
-    GlobalTimer:cancel(handler_1)
 end
 
 function love.update(dt)
-    uberCircle:update(dt)
 
-    GlobalTimer:update(dt)
     --for my own convenient, so i don't have to touch the mouse ever
     if love.keyboard.isDown("escape") then
         love.event.quit()
@@ -24,7 +20,6 @@ function love.update(dt)
 end
 
 function love.draw()
-    uberCircle:draw()
 end
 
 function recursiveEnumerate(folder, file_list)
