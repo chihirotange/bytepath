@@ -1,6 +1,7 @@
 require "libs.utils"
 Object = require "libs.classic"
 Timer = require "libs.timer"
+Mose = require "libs.mose"
 
 function love.load()
     -- automatically load libs
@@ -12,6 +13,8 @@ function love.load()
 end
 
 function love.update(dt)
+    
+    if currentRoom then currentRoom:update(dt) end
 
     --for my own convenient, so i don't have to touch the mouse ever
     if love.keyboard.isDown("escape") then
@@ -20,6 +23,7 @@ function love.update(dt)
 end
 
 function love.draw()
+    if currentRoom then currentRoom:draw() end
 end
 
 function recursiveEnumerate(folder, file_list)
