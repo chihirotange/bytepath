@@ -1,7 +1,11 @@
-require "libs.utils"
 Object = require "libs.classic"
 Timer = require "libs.timer"
 Mose = require "libs.mose"
+Input = require "libs.input"
+require "objects.circle"
+require "objects.square"
+require "objects.area"
+require "libs.utils"
 
 function love.load()
     -- automatically load libs
@@ -10,6 +14,9 @@ function love.load()
     requireFiles(object_files)
 
     -- logic
+    GlobalInput = Input() 
+    GlobalInput:bind("1", function() goToRoom("squareRoom") end)
+    GlobalInput:bind("2", function() goToRoom("circleRoom") end)
 end
 
 function love.update(dt)

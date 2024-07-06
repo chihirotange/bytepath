@@ -5,9 +5,10 @@ function Room:new()
     self.areas = {}
 end
 
-function Room:addArea(area)
-    if Mose.detect(self.areas, area) then return end
+function Room:createArea()
+    local area = Area()
     table.insert(self.areas, area)
+    return area
 end
 
 function Room:update(dt)
@@ -18,14 +19,10 @@ end
 
 function Room:draw()
     for key, area in pairs(self.areas) do
-        area:update(dt)
+        area:draw()
     end
 end
 
 function goToRoom(roomType)
     currentRoom = _G[roomType]
 end
-
-squareRoom = Room()
-goToRoom("squareRoom")
-squareRoomArea = Area()
