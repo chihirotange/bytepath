@@ -1,3 +1,3 @@
 circleRoom = Room()
 circleRoomArea = circleRoom:createArea()
-circleRoomArea:addGameObject("Circle", 200, 200, {radius = 50})
+circleRoomArea:addGameObject("Circle", gw/2, gh/2, {radius = 50})
