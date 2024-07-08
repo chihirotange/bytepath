@@ -17,7 +17,6 @@ function love.load()
 
     -- logic
     GlobalInput = Input() 
-    GlobalInput:bind('3', function() GlobalCamera:shake(4, 60, 0.3) end)
     love.graphics.setDefaultFilter("nearest")
     love.graphics.setLineStyle("rough")
     
@@ -28,8 +27,9 @@ function love.load()
     MainRoom = Room()
     MainRoomArea = MainRoom:createArea() 
     goToRoom("MainRoom")
-    MainRoomArea:addGameObject("Circle", gw/2, gh/2, {radius = 20})
-
+    Player = MainRoomArea:addGameObject("Player", gw/2, gh/2)
+    
+    GlobalInput:bind('3', function() Player.dead = true end)
 end
 
 function love.update(dt)
